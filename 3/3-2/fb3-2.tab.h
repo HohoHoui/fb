@@ -74,11 +74,11 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 8 "fb3-2.y"
+#line 9 "fb3-2.y"
 
 	struct ast *a;
 	double d;
-	//add
+	/*add*/
 	struct symbol *s; /* which symbol */
 	struct symlist *sl;
 	int fn;

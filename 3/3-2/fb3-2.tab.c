@@ -72,8 +72,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "fb3-2.h"
+#include "fb3-2.tab.h"
 
-#line 77 "fb3-2.tab.c"
+#line 78 "fb3-2.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -519,9 +520,9 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    42,    42,    43,    44,    45,    48,    49,    57,    58,
-      59,    60,    61,    62,    63,    64,    65,    66,    67,    68,
-      69,    73,    74,    77,    78,    83,    84,    88,    91
+       0,    43,    43,    44,    45,    46,    49,    50,    58,    59,
+      60,    61,    62,    63,    64,    65,    66,    67,    68,    69,
+      70,    74,    75,    78,    79,    84,    85,    89,    92
 };
 #endif
 
@@ -1122,160 +1123,160 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* stmt: IF exp THEN list  */
-#line 42 "fb3-2.y"
+#line 43 "fb3-2.y"
                        { (yyval.a) = newflow('I', (yyvsp[-2].a), (yyvsp[0].a), NULL); }
-#line 1128 "fb3-2.tab.c"
+#line 1129 "fb3-2.tab.c"
     break;
 
   case 3: /* stmt: IF exp THEN list ELSE list  */
-#line 43 "fb3-2.y"
+#line 44 "fb3-2.y"
                               { (yyval.a) = newflow('I', (yyvsp[-4].a), (yyvsp[-2].a), (yyvsp[0].a)); }
-#line 1134 "fb3-2.tab.c"
+#line 1135 "fb3-2.tab.c"
     break;
 
   case 4: /* stmt: WHILE exp DO list  */
-#line 44 "fb3-2.y"
+#line 45 "fb3-2.y"
                      { (yyval.a) = newflow('W', (yyvsp[-2].a), (yyvsp[0].a), NULL); }
-#line 1140 "fb3-2.tab.c"
+#line 1141 "fb3-2.tab.c"
     break;
 
   case 6: /* list: %empty  */
-#line 48 "fb3-2.y"
+#line 49 "fb3-2.y"
                     { (yyval.a) = NULL; }
-#line 1146 "fb3-2.tab.c"
+#line 1147 "fb3-2.tab.c"
     break;
 
   case 7: /* list: stmt ';' list  */
-#line 49 "fb3-2.y"
+#line 50 "fb3-2.y"
                  { if ((yyvsp[0].a) == NULL)
 		 	(yyval.a) = (yyvsp[-2].a);
 		 else
 		 	(yyval.a) = newast('L', (yyvsp[-2].a), (yyvsp[0].a));
 		 }
-#line 1156 "fb3-2.tab.c"
+#line 1157 "fb3-2.tab.c"
     break;
 
   case 8: /* exp: exp CMP exp  */
-#line 57 "fb3-2.y"
+#line 58 "fb3-2.y"
                   { (yyval.a) = newcmp((yyvsp[-1].fn), (yyvsp[-2].a), (yyvsp[0].a)); }
-#line 1162 "fb3-2.tab.c"
+#line 1163 "fb3-2.tab.c"
     break;
 
   case 9: /* exp: exp '+' exp  */
-#line 58 "fb3-2.y"
+#line 59 "fb3-2.y"
                { (yyval.a) = newast('+', (yyvsp[-2].a),(yyvsp[0].a)); }
-#line 1168 "fb3-2.tab.c"
+#line 1169 "fb3-2.tab.c"
     break;
 
   case 10: /* exp: exp '-' exp  */
-#line 59 "fb3-2.y"
+#line 60 "fb3-2.y"
                { (yyval.a) = newast('-', (yyvsp[-2].a),(yyvsp[0].a));}
-#line 1174 "fb3-2.tab.c"
+#line 1175 "fb3-2.tab.c"
     break;
 
   case 11: /* exp: exp '*' exp  */
-#line 60 "fb3-2.y"
+#line 61 "fb3-2.y"
                { (yyval.a) = newast('*', (yyvsp[-2].a),(yyvsp[0].a)); }
-#line 1180 "fb3-2.tab.c"
+#line 1181 "fb3-2.tab.c"
     break;
 
   case 12: /* exp: exp '/' exp  */
-#line 61 "fb3-2.y"
+#line 62 "fb3-2.y"
                { (yyval.a) = newast('/', (yyvsp[-2].a),(yyvsp[0].a)); }
-#line 1186 "fb3-2.tab.c"
+#line 1187 "fb3-2.tab.c"
     break;
 
   case 13: /* exp: '|' exp  */
-#line 62 "fb3-2.y"
+#line 63 "fb3-2.y"
            { (yyval.a) = newast('|', (yyvsp[0].a), NULL); }
-#line 1192 "fb3-2.tab.c"
+#line 1193 "fb3-2.tab.c"
     break;
 
   case 14: /* exp: '(' exp ')'  */
-#line 63 "fb3-2.y"
+#line 64 "fb3-2.y"
                { (yyval.a) = (yyvsp[-1].a); }
-#line 1198 "fb3-2.tab.c"
+#line 1199 "fb3-2.tab.c"
     break;
 
   case 15: /* exp: '-' exp  */
-#line 64 "fb3-2.y"
+#line 65 "fb3-2.y"
                         { (yyval.a) = newast('M', (yyvsp[0].a), NULL); }
-#line 1204 "fb3-2.tab.c"
+#line 1205 "fb3-2.tab.c"
     break;
 
   case 16: /* exp: NUMBER  */
-#line 65 "fb3-2.y"
+#line 66 "fb3-2.y"
           { (yyval.a) = newnum((yyvsp[0].d)); }
-#line 1210 "fb3-2.tab.c"
+#line 1211 "fb3-2.tab.c"
     break;
 
   case 17: /* exp: NAME  */
-#line 66 "fb3-2.y"
+#line 67 "fb3-2.y"
         { (yyval.a) = newref((yyvsp[0].s)); }
-#line 1216 "fb3-2.tab.c"
+#line 1217 "fb3-2.tab.c"
     break;
 
   case 18: /* exp: NAME '=' exp  */
-#line 67 "fb3-2.y"
+#line 68 "fb3-2.y"
                 { (yyval.a) = newasgn((yyvsp[-2].s), (yyvsp[0].a)); }
-#line 1222 "fb3-2.tab.c"
+#line 1223 "fb3-2.tab.c"
     break;
 
   case 19: /* exp: FUNC '(' explist ')'  */
-#line 68 "fb3-2.y"
+#line 69 "fb3-2.y"
                         { (yyval.a) = newfunc((yyvsp[-3].fn), (yyvsp[-1].a)); }
-#line 1228 "fb3-2.tab.c"
+#line 1229 "fb3-2.tab.c"
     break;
 
   case 20: /* exp: NAME '(' explist ')'  */
-#line 69 "fb3-2.y"
+#line 70 "fb3-2.y"
                         { (yyval.a) = newcall((yyvsp[-3].s), (yyvsp[-1].a)); }
-#line 1234 "fb3-2.tab.c"
+#line 1235 "fb3-2.tab.c"
     break;
 
   case 22: /* explist: exp ',' explist  */
-#line 74 "fb3-2.y"
+#line 75 "fb3-2.y"
                    { (yyval.a) = newast('L', (yyvsp[-2].a), (yyvsp[0].a)); }
-#line 1240 "fb3-2.tab.c"
+#line 1241 "fb3-2.tab.c"
     break;
 
   case 23: /* symlist: NAME  */
-#line 77 "fb3-2.y"
+#line 78 "fb3-2.y"
               { (yyval.sl) = newsymlist((yyvsp[0].s), NULL); }
-#line 1246 "fb3-2.tab.c"
+#line 1247 "fb3-2.tab.c"
     break;
 
   case 24: /* symlist: NAME ',' symlist  */
-#line 78 "fb3-2.y"
+#line 79 "fb3-2.y"
                     { (yyval.sl) = newsymlist((yyvsp[-2].s), (yyvsp[0].sl)); }
-#line 1252 "fb3-2.tab.c"
+#line 1253 "fb3-2.tab.c"
     break;
 
   case 26: /* calclist: calclist stmt EOL  */
-#line 84 "fb3-2.y"
+#line 85 "fb3-2.y"
                      {
 	 printf("= %4.4g\n> ", eval((yyvsp[-1].a)));
 	 treefree((yyvsp[-1].a));
 	 }
-#line 1261 "fb3-2.tab.c"
+#line 1262 "fb3-2.tab.c"
     break;
 
   case 27: /* calclist: calclist LET NAME '(' symlist ')' '=' list EOL  */
-#line 88 "fb3-2.y"
+#line 89 "fb3-2.y"
                                                   {
 			 dodef((yyvsp[-6].s), (yyvsp[-4].sl), (yyvsp[-1].a));
 			 printf("Defined %s\n> ", (yyvsp[-6].s)->name); }
-#line 1269 "fb3-2.tab.c"
+#line 1270 "fb3-2.tab.c"
     break;
 
   case 28: /* calclist: calclist error EOL  */
-#line 91 "fb3-2.y"
+#line 92 "fb3-2.y"
                       { yyerrok; printf("> "); }
-#line 1275 "fb3-2.tab.c"
+#line 1276 "fb3-2.tab.c"
     break;
 
 
-#line 1279 "fb3-2.tab.c"
+#line 1280 "fb3-2.tab.c"
 
       default: break;
     }
@@ -1468,5 +1469,5 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 94 "fb3-2.y"
+#line 95 "fb3-2.y"
 

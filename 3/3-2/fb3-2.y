@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "fb3-2.h"
+#include "fb3-2.tab.h"
 %}
 
 %union{

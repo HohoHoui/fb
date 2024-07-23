@@ -88,7 +88,7 @@ struct ast *newcall(struct symbol *s, struct ast *l);
 struct ast *newref(struct symbol *s);
 struct ast *newasgn(struct symbol *s, struct ast *v);
 struct ast *newflow(int nodetype, struct ast *cond, struct ast *tl, struct ast *tr);
-
+struct symlist *newsymlist(struct symbol *sym, struct symlist *next);
 /*add*/
 void dodef(struct symbol *name, struct symlist *syms, struct ast *stmts);
 
